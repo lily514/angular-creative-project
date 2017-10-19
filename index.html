@@ -14,14 +14,14 @@
 
 </head>
 <body>
-<h1> BYU Events </h1>
-<body ng-app="comment" ng-controller="MainCtrl">
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
-<div class="page-header"> 
-  <h1>Comments </h1>
-</div>
-
+	<h1> BYU Events </h1>
+	<body ng-app="comment" ng-controller="MainCtrl">
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+<div id="center">
+	<div class="page-header"> 
+		<h2>Comments</h2>
+	</div>
   <form ng-submit="addComment()" style = "margin-top30px;">
     <input type="text" ng-model="formContent"></input>
     <button type="submit">Add Comment</button>
@@ -36,7 +36,6 @@
   <p></p>
   <p></p>
   <p></p>
-
 <input type="text" ng-model="enteredValue">
 <br>
 <button type="button" ng-Click="findValue(enteredValue)">Search Comments</button>
@@ -46,6 +45,7 @@
 			<p>{{result.title}} - upvotes: {{result.upvotes}}</p>
 		</li>
 	</ul>
+</div>
 </div>	
 
 </div>
