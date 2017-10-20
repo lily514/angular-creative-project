@@ -3,28 +3,29 @@ angular.module('event', [])
 .directive('textpost',textPostDirective)
 
 function mainCtrl ($scope){
-    $scope.events = [];
+    $scope.eventList = [];
 
-    $scope.addevent = function() {
+    $scope.addevent = function(event) {
         if($scope.title == '') { return; }
-        console.log($scope.title, $scope.description, $scope.location, $scope.date);
-        $scope.events.push({
-          title: $scope.title,
-          description: $scope.description,
-          location: $scope.location,
-          date: $scope.date,
+        console.log(event.title, event.description, event.location, event.date);
+        $scope.eventList.push({
+          title: event.title,
+          description: event.description,
+          location: event.location,
+          date: event.date,
         });
-        $scope.title = '';
-        $scope.description = '';
-        $scope.location = '';
-        $scope.date = '';
+        event.title = '';
+        event.description = '';
+        event.location = '';
+        event.date = '';
+	event.upvotes = 0;
 	};
   }
 
 function textPostDirective(){
   return{
    scope: {
-     title: "="
+     event: "="
    },
    restrict: 'E',
    replace: 'true',
@@ -32,6 +33,9 @@ function textPostDirective(){
      '<div class="form-group" id="eventList">'+
 	    	'<h3>{{event.title}} </h3> '+
 	    	'<div class="row">'+
+			'<div class =" col-sm-3">'+
+				'<h4><strong>Description:</strong>{{event.description}} </h4>'+
+			'</div>'+
 	    		'<div class="col-sm-3">'+
 	    			'<h4><strong>When:</strong> {{event.date}} </h4>'+
 	    		'</div>'+
@@ -48,5 +52,9 @@ function textPostDirective(){
     ),
   }
 };
+
+function incrementUpvotes(event){
+
+}
 
 
