@@ -1,55 +1,86 @@
 <!DOCTYPE html>
 <head>
   <title></title>
-<!--- bootstrap -->
+<!--- bootstrap and fonts -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <!--- angular -->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
  <!--- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>-->
 
 <!--- custom script -->
-  <script src="app.js"></script>
+  <script src="app2.js"></script>
   <link rel="stylesheet" type="text/css" href="main.css">
 
 
 </head>
-<body>
-	<h1> BYU Events </h1>
-	<body ng-app="comment" ng-controller="MainCtrl">
-	<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-<div id="center">
-	<div class="page-header"> 
-		<h2>Comments</h2>
-	</div>
-  <form ng-submit="addComment()" style = "margin-top30px;">
-    <input type="text" ng-model="formContent"></input>
-    <button type="submit">Add Comment</button>
-  </form>
-  <div>
-    {{test}}
-  </div>
-  <div ng-repeat="comment in comments | orderBy: '-upvotes'">
-    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
-    {{comment.title}} - upvotes: {{comment.upvotes}}
-  </div>
-  <p></p>
-  <p></p>
-  <p></p>
-<input type="text" ng-model="enteredValue">
-<br>
-<button type="button" ng-Click="findValue(enteredValue)">Search Comments</button>
-<h3>Results</h3>
-	<ul>
-		<li ng-repeat="result in results"> 
-			<p>{{result.title}} - upvotes: {{result.upvotes}}</p>
-		</li>
-	</ul>
-</div>
-</div>	
+<body ng-app="event" ng-controller="MainCtrl">
 
-</div>
-</div>
+<h1> BYU Events </h1>
+
+<form ng-submit="addevent()" id="addEvent">
+	<div class="form-group">
+		<h2>Create Event</h2>
+
+		<div class="form-group row">
+		  <label class="col-sm-2 col-form-label" for="title" >Event Name</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" ng-model="title" hint="Event Name" id="title"></input>
+			</div>
+		</div>
+
+		<div class="form-group row">
+		  <label class="col-sm-2 col-form-label" for="date">When</label>
+    		<div class="col-sm-10">
+    			<input type="text" class="form-control" id="date" rows="3" ng-model="date"></input>
+    		</div>
+    	</div>
+
+    	<div class="form-group row">
+    		<label class="col-sm-2 col-form-label" for="Location">Where</label>
+    		<div class="col-sm-10">
+    			<input type="text" class="form-control" id="location" rows="3" ng-model="location"></input>
+    		</div>
+    	</div>
+		
+		<div class="form-group row">
+		  <label class="col-sm-2 col-form-label" for="description">Description</label>
+	    	<div class="col-sm-10">
+	    		<textarea class="form-control" id="description" rows="3" ng-model="description"></textarea>
+	    	</div>
+    	</div>
+ 		
+	    <button type="submit" class="button-primary">Add Event</button>
+
+	</div>
+</form>
+
+<form>
+	<div ng-repeat="event in events | orderBy: '-upvotes'">
+		<div class="form-group" id="eventList">
+	    	<h3>{{event.title}} </h3> 
+	    	<div class="row">
+	    		<div class="col-sm-3">
+	    			<h4><strong>When:</strong> {{event.date}} </h4>
+	    		</div>
+	    		<div class="col-sm-3">
+	    			<h4><strong>Where: </strong> {{event.location}} </h4>
+	    		</div>
+	    		<div class="col-sm-3">
+	    			<h4><strong>Likes:</strong> {{event.upvotes}} </h4>
+	    		</div>
+	    		<div class="col-sm-3">
+	    			<h4> <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(event)"></span> </h4>
+	    		</div>
+	    	</div>
+	    	<div class="row">
+	    		<div class="col-sm-12">
+		    		<h5><strong>Description:</strong> {{event.description}}</h5>
+		    	</div>
+		    </div>
+	  	</div>
+	</div>
+</form>
 
 </body>
 
