@@ -4,12 +4,26 @@
 <!--- bootstrap and fonts -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<!-- firebase-->
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA7E4QqkmqEhnOvh2Xnu72TBcB9BFIXM3o",
+    authDomain: "byu-events-bbec7.firebaseapp.com",
+    databaseURL: "https://byu-events-bbec7.firebaseio.com",
+    projectId: "byu-events-bbec7",
+    storageBucket: "",
+    messagingSenderId: "699671126052"
+  };
+  firebase.initializeApp(config);
+</script>
 <!--- angular -->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
  <!--- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>-->
 
 <!--- custom script -->
-  <script src="app2.js"></script>
+  <script src="app3.js"></script>
   <link rel="stylesheet" type="text/css" href="main.css">
 
 
@@ -56,7 +70,7 @@
 </form>
 
 <form>
-<div ng-repeat='event in events'>
+<div ng-repeat='event in eventList'>
 <textpost event = 'event'/>
 <!--		<div class="form-group" id="eventList">
 	    	<h3>{{event.title}} </h3> 
